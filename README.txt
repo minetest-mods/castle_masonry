@@ -1,0 +1,24 @@
+=-=-=-=-=-=-=-=-=-=
+
+Castles Mod
+by: Philipbenr And DanDuncombe
+
+=-=-=-=-=-=-=-=-=-=
+
+Licence: MIT
+
+see: LICENSE
+
+=-=-=-=-=-=-=-=-=-=
+
+This is a mod all about creating castles and castle dungeons. Many of the nodes are used for the outer-walls or dungeons.
+
+=-=-=-=-=-=-=-=-=-=
+
+Contains as of now:
+
+--Walls, Corner-walls,
+--Castlestone Stairs, Slabs, and Pillars
+--Arrowslits
+--Rubble
+--Murder holes
