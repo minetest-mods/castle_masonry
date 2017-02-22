@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-20 13:31-0700\n"
+"POT-Creation-Date: 2017-02-21 23:41-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,51 +32,51 @@ msgstr ""
 msgid "@1 Embrasure"
 msgstr ""
 
-#: init.lua:27
+#: init.lua:29
 msgid "Stonewall"
 msgstr ""
 
-#: init.lua:30
+#: init.lua:32
 msgid "Cobble"
 msgstr ""
 
-#: init.lua:33
+#: init.lua:35
 msgid "Stonebrick"
 msgstr ""
 
-#: init.lua:36
+#: init.lua:38
 msgid "Sandstone Brick"
 msgstr ""
 
-#: init.lua:39
+#: init.lua:41
 msgid "Desert Stone Brick"
 msgstr ""
 
-#: init.lua:42
+#: init.lua:44
 msgid "Stone"
 msgstr ""
 
-#: init.lua:45
+#: init.lua:47
 msgid "Sandstone"
 msgstr ""
 
-#: init.lua:48
+#: init.lua:50
 msgid "Desert Stone"
 msgstr ""
 
-#: init.lua:51
+#: init.lua:53
 msgid "Wood"
 msgstr ""
 
-#: init.lua:54
+#: init.lua:56
 msgid "Ice"
 msgstr ""
 
-#: init.lua:57
+#: init.lua:59
 msgid "Snow"
 msgstr ""
 
-#: init.lua:60
+#: init.lua:62
 msgid "Obsidian Brick"
 msgstr ""
 
@@ -134,6 +134,10 @@ msgstr ""
 
 #: pillars.lua:123
 msgid "@1 Crossbrace"
+msgstr ""
+
+#: pillars.lua:147
+msgid "@1 Extended Crossbrace"
 msgstr ""
 
 #: stone_wall.lua:11

@@ -134,8 +134,26 @@ castle_masonry.register_pillar = function(material)
 			connect_back = {-0.25,0.25,0.25,0.25,0.5,0.75}, -- +Z
 			connect_right = {0.25,0.25,-0.25,0.75,0.5,0.25}, -- +X
 		},
-		connects_to = { mod_name..":pillar_"..material.name.."_crossbrace", "group:crossbrace_connectable"},
+		connects_to = {
+			mod_name..":pillar_"..material.name.."_crossbrace",
+			mod_name..":pillar_"..material.name.."_extended_crossbrace",
+			"group:crossbrace_connectable"},
 		connect_sides = { "front", "left", "back", "right" },
+	})
+	
+	minetest.register_node(mod_name..":pillar_"..material.name.."_extended_crossbrace",
+	{
+		drawtype = "nodebox",
+		description = S("@1 Extended Crossbrace", desc),
+		tiles = tile,
+		groups = composition_def.groups,
+		sounds = composition_def.sounds,
+		paramtype = "light",
+		paramtype2 = "facedir",
+		node_box = {
+			type = "fixed",
+			fixed = {-1.25,0.25,-0.25,1.25,0.5,0.25},
+		},
 	})
 	
 	minetest.register_craft({
@@ -203,6 +221,18 @@ castle_masonry.register_pillar = function(material)
 		recipe = {mod_name..":pillar_"..material.name.."_bottom_half", mod_name..":pillar_"..material.name.."_bottom_half"},
 	})
 	
+	minetest.register_craft({
+		output = mod_name..":pillar_"..material.name.."_extended_crossbrace",
+		type="shapeless",
+		recipe = {mod_name..":pillar_"..material.name.."_crossbrace"},
+	})
+
+	minetest.register_craft({
+		output = mod_name..":pillar_"..material.name.."_crossbrace",
+		type="shapeless",
+		recipe = {mod_name..":pillar_"..material.name.."_extended_crossbrace"},
+	})
+	
 	if burn_time > 0 then
 		minetest.register_craft({
 			type = "fuel",
@@ -237,6 +267,11 @@ castle_masonry.register_pillar = function(material)
 		minetest.register_craft({
 			type = "fuel",
 			recipe = mod_name..":pillar_"..material.name.."_crossbrace",
+			burntime = burn_time*5/10,
+		})
+		minetest.register_craft({
+			type = "fuel",
+			recipe = mod_name..":pillar_"..material.name.."_extended_crossbrace",
 			burntime = burn_time*5/10,
 		})
 	end
