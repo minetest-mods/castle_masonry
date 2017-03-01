@@ -112,7 +112,7 @@ minetest.register_alias("castle:pillars_top", "castle_masonry:pillars_stonewall_
 minetest.register_alias("castle:pillars_middle", "castle_masonry:pillars_stonewall_middle")
 minetest.register_alias("castle:arrowslit", "castle_masonry:arrowslit_stonewall")
 minetest.register_alias("castle:arrowslit_hole", "castle_masonry:arrowslit_stonewall_hole")
-minetest.register_alias("castle:arrowslit", "castle_masonry:arrowslit_stonewall_cross")
+minetest.register_alias("castle:arrowslit_cross", "castle_masonry:arrowslit_stonewall_cross")
 
 for _, material in pairs(castle_masonry.materials) do
 	castle_masonry.register_murderhole_alias("castle", material.name, "castle_masonry", material.name)
