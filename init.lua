@@ -26,7 +26,7 @@ end
 
 castle_masonry.materials = {}
 if read_setting("castle_masonry_stonewall", true) then
-	table.insert(castle_masonry.materials, {name="stonewall", desc=S("Stonewall"), tile="castle_stonewall.png", craft_material="castle:stonewall"})
+	table.insert(castle_masonry.materials, {name="stonewall", desc=S("Stonewall"), tile="castle_stonewall.png", craft_material="castle_masonry:stonewall"})
 end
 if read_setting("castle_masonry_cobble", true) then
 	table.insert(castle_masonry.materials, {name="cobble", desc=S("Cobble"), tile="default_cobble.png", craft_material="default:cobble"})
