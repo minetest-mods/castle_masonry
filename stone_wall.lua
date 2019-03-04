@@ -102,8 +102,8 @@ if minetest.get_modpath("moreblocks") then
 		sunlight_propagates = true,
 	})
 	
-	stairsplus:register_stair_alias("castle", "stonewall", "castle_masonry", "stonewall")
-	stairsplus:register_stair_alias("castle", "rubble", "castle_masonry", "rubble")
+	stairsplus:register_alias_all("castle", "stonewall", "castle_masonry", "stonewall")
+	stairsplus:register_alias_all("castle", "rubble", "castle_masonry", "rubble")
 
 elseif minetest.get_modpath("stairs") then
 	stairs.register_stair_and_slab("stonewall", "castle_masonry:stonewall",
@@ -159,7 +159,7 @@ if minetest.get_modpath("moreblocks") then
 		sunlight_propagates = true,
 	})
 
-	stairsplus:register_stair_alias("castle", "dungeon_stone", "castle_masonry", "dungeon_stone")
+	stairsplus:register_alias_all("castle", "dungeon_stone", "castle_masonry", "dungeon_stone")
 	
 elseif minetest.get_modpath("stairs") then
 	stairs.register_stair_and_slab("dungeon_stone", "castle_masonry:dungeon_stone",
