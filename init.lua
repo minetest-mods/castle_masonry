@@ -95,7 +95,7 @@ castle_masonry.get_material_properties = function(material)
 		burn_time = minetest.get_craft_result({method="fuel", width=1, items={ItemStack(material.composition_material)}}).time
 	else
 		composition_def = minetest.registered_nodes[material.craft_material]
-		burn_time = minetest.get_craft_result({method="fuel", width=1, items={ItemStack(material.craft_materia)}}).time
+		burn_time = minetest.get_craft_result({method="fuel", width=1, items={ItemStack(material.craft_material)}}).time
 	end
 
 	local tiles = material.tile
