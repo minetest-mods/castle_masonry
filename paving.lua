@@ -2,20 +2,8 @@ minetest.register_alias("castle:pavement",      	"castle_masonry:pavement_brick"
 minetest.register_alias("castle:pavement_brick",	"castle_masonry:pavement_brick")
 minetest.register_alias("castle:roofslate",			"castle_masonry:roofslate")
 
+local S = minetest.get_translator("castle_masonry")
 
--- Used for localization, choose either built-in or intllib.
-
-local MP, S, NS = nil
-
-if (minetest.get_modpath("intllib") == nil) then
-	S = minetest.get_translator("castle_masonry")
-
-else
-	-- internationalization boilerplate
-	MP = minetest.get_modpath(minetest.get_current_modname())
-	S, NS = dofile(MP.."/intllib.lua")
-
-end
 
 
 minetest.register_node("castle_masonry:pavement_brick", {

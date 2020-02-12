@@ -1,17 +1,5 @@
 
--- Used for localization, choose either built-in or intllib.
-
-local MP, S, NS = nil
-
-if (minetest.get_modpath("intllib") == nil) then
-	S = minetest.get_translator("castle_masonry")
-
-else
-	-- internationalization boilerplate
-	MP = minetest.get_modpath(minetest.get_current_modname())
-	S, NS = dofile(MP.."/intllib.lua")
-
-end
+local S = minetest.get_translator("castle_masonry")
 
 
 castle_masonry.register_pillar = function(material)
