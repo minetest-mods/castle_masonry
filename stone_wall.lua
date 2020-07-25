@@ -151,7 +151,7 @@ minetest.register_craft({
 
 
 if minetest.get_modpath("moreblocks") then
-	stairsplus:register_all("castle", "dungeon_stone", "castle_masonry:dungeon_stone", {
+	stairsplus:register_all("castle_masonry", "dungeon_stone", "castle_masonry:dungeon_stone", {
 		description = S("Dungeon Stone"),
 		tiles = {"castle_dungeon_stone.png"},
 		groups = {cracky=2, not_in_creative_inventory=1},
