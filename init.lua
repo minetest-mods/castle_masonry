@@ -146,6 +146,7 @@ for _, material in pairs(castle_masonry.materials) do
 	-- Arrowslit upgrade has special handling because the castle mod arrow slit is reversed relative to current build-from-inside standard
 	local lbm_def = {
 		name = "castle_masonry:arrowslit_flip_front_to_back"..material.name,
+		run_at_every_load = false,
 		nodenames = {
 			"castle:arrowslit_"..material.name,
 			"castle:arrowslit_"..material.name.."_cross",
