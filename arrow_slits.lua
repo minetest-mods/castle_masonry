@@ -101,9 +101,9 @@ castle_masonry.register_arrowslit = function(material)
 	minetest.register_craft({
 		output = mod_name .. ":arrowslit_" .. material.name .. " 6",
 		recipe = {
-		{material.craft_material,"", material.craft_material},
-		{material.craft_material,"", material.craft_material},
-		{material.craft_material,"", material.craft_material} }
+		{material.craft_material, "", material.craft_material},
+		{material.craft_material, "", material.craft_material},
+		{material.craft_material, "", material.craft_material} }
 	})
 
 	minetest.register_craft({
@@ -154,9 +154,9 @@ end
 
 castle_masonry.register_arrowslit_alias = function(old_mod_name, old_material_name, new_mod_name, new_material_name)
 	minetest.register_alias(old_mod_name .. ":arrowslit_" .. old_material_name,					new_mod_name .. ":arrowslit_" .. new_material_name)
-	minetest.register_alias(old_mod_name .. ":arrowslit_" .. old_material_name .. "_cross",		new_mod_name .. ":arrowslit_" .. new_material_name.."_cross")
-	minetest.register_alias(old_mod_name .. ":arrowslit_" .. old_material_name .. "_hole",		new_mod_name .. ":arrowslit_" .. new_material_name.."_hole")
-	minetest.register_alias(old_mod_name .. ":arrowslit_" .. old_material_name .. "_embrasure",	new_mod_name .. ":arrowslit_" .. new_material_name.."_embrasure")
+	minetest.register_alias(old_mod_name .. ":arrowslit_" .. old_material_name .. "_cross",		new_mod_name .. ":arrowslit_" .. new_material_name .. "_cross")
+	minetest.register_alias(old_mod_name .. ":arrowslit_" .. old_material_name .. "_hole",		new_mod_name .. ":arrowslit_" .. new_material_name .. "_hole")
+	minetest.register_alias(old_mod_name .. ":arrowslit_" .. old_material_name .. "_embrasure",	new_mod_name .. ":arrowslit_" .. new_material_name .. "_embrasure")
 end
 
 castle_masonry.register_arrowslit_alias_force = function(old_mod_name, old_material_name, new_mod_name, new_material_name)

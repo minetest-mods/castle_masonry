@@ -50,7 +50,7 @@ minetest.register_node("castle_masonry:roofslate", {
 	inventory_image = "castle_slate.png",
 	paramtype = "light",
 	walkable = false,
-	tiles = {'castle_slate.png'},
+	tiles = {"castle_slate.png"},
 	climbable = true,
 	selection_box = {
 		type = "fixed",

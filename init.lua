@@ -141,7 +141,7 @@ if read_setting("castle_masonry_upgrade_lbm", true) then
 				"castle:arrowslit_" .. material.name .. "_hole"
 			},
 			action = function(pos, node)
-				local flip_front_to_back = {[0]=2, 3, 0, 1, 6, 7, 4, 5, 10, 7, 8, 9, 14, 15, 12, 13, 18, 19, 16, 17, 22, 23, 20, 21}
+				local flip_front_to_back = {[0] = 2, 3, 0, 1, 6, 7, 4, 5, 10, 7, 8, 9, 14, 15, 12, 13, 18, 19, 16, 17, 22, 23, 20, 21}
 				node.param2 = flip_front_to_back[node.param2]
 				node.name = "castle_masonry" .. string.sub(node.name, 7, -1)
 				minetest.swap_node(pos, node)
