@@ -22,3 +22,7 @@ castle_masonry_obsidianbrick (Obsidian Brick) bool false
 castle_masonry_pillar (Pillars) bool true
 castle_masonry_arrowslit (Arrow slits) bool true
 castle_masonry_murderhole (Murder holes and machicolations) bool true
+
+[Others]
+
+castle_masonry_upgrade_lbm (Arrowslit upgrade LBM) bool true
