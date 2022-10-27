@@ -1,7 +1,7 @@
 
 -- translation
 
-S = minetest.get_translator("castle_masonry")
+local S = minetest.get_translator("castle_masonry")
 
 minetest.register_alias("castle:stonewall", "castle_masonry:stonewall")
 minetest.register_alias("castle:dungeon_stone", "castle_masonry:dungeon_stone")
@@ -57,11 +57,11 @@ minetest.register_node("castle_masonry:stonewall_corner", {
 	paramtype2 = "facedir",
 	description = S("Castle Corner"),
 	tiles = {"castle_corner_stonewall_tb.png^[transformR90",
-		 "castle_corner_stonewall_tb.png^[transformR180",
-		 "castle_corner_stonewall1.png",
-		 "castle_stonewall.png",
-		 "castle_stonewall.png",	
-		 "castle_corner_stonewall2.png"},
+		"castle_corner_stonewall_tb.png^[transformR180",
+		"castle_corner_stonewall1.png",
+		"castle_stonewall.png",
+		"castle_stonewall.png",
+		"castle_corner_stonewall2.png"},
 	groups = {cracky = 3},
 	sounds = default.node_sound_stone_defaults()
 })
@@ -90,7 +90,7 @@ if minetest.get_modpath("moreblocks") then
 		sounds = default.node_sound_gravel_defaults(),
 		sunlight_propagates = true
 	})
-	
+
 	stairsplus:register_alias_all("castle", "stonewall", "castle_masonry", "stonewall")
 	stairsplus:register_alias_all("castle", "rubble", "castle_masonry", "rubble")
 
@@ -146,7 +146,7 @@ if minetest.get_modpath("moreblocks") then
 	})
 
 	stairsplus:register_alias_all("castle", "dungeon_stone", "castle_masonry", "dungeon_stone")
-	
+
 elseif minetest.get_modpath("stairs") then
 	stairs.register_stair_and_slab("dungeon_stone", "castle_masonry:dungeon_stone",
 		{cracky = 2},

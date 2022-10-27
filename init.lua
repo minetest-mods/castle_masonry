@@ -8,7 +8,7 @@ dofile(MP .. "/stone_wall.lua")
 dofile(MP .. "/paving.lua")
 
 -- translation
-S = minetest.get_translator("castle_masonry")
+local S = minetest.get_translator("castle_masonry")
 
 local read_setting = function(name, default)
 	local setting = minetest.settings:get_bool(name)

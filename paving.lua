@@ -4,7 +4,7 @@ minetest.register_alias("castle:roofslate",	"castle_masonry:roofslate")
 
 -- translation
 
-S = minetest.get_translator("castle_masonry")
+local S = minetest.get_translator("castle_masonry")
 
 minetest.register_node("castle_masonry:pavement_brick", {
 	description = S("Paving Stone"),

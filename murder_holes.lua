@@ -1,12 +1,12 @@
 
 -- translation
 
-S = minetest.get_translator("castle_masonry")
+local S = minetest.get_translator("castle_masonry")
 
 castle_masonry.register_murderhole = function(material)
 	local composition_def, burn_time, tile, desc = castle_masonry.get_material_properties(material)
 	local mod_name = minetest.get_current_modname()
-	
+
 	-- Node Definition
 	minetest.register_node(mod_name .. ":hole_" .. material.name, {
 		drawtype = "nodebox",
@@ -26,7 +26,7 @@ castle_masonry.register_murderhole = function(material)
 			}
 		}
 	})
-	
+
 	minetest.register_node(mod_name .. ":machicolation_" .. material.name, {
 		drawtype = "nodebox",
 		description = S("@1 Machicolation", desc),
@@ -64,7 +64,7 @@ castle_masonry.register_murderhole = function(material)
 		type = "shapeless",
 		recipe = {mod_name .. ":machicolation_" .. material.name}
 	})
-	
+
 	if burn_time > 0 then
 		minetest.register_craft({
 			type = "fuel",
@@ -75,7 +75,7 @@ castle_masonry.register_murderhole = function(material)
 			type = "fuel",
 			recipe = mod_name .. ":machicolation_" .. material.name,
 			burntime = burn_time
-		})	
+		})
 	end
 end
 
