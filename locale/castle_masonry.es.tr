@@ -1,4 +1,5 @@
 # textdomain: castle_masonry
+# Translation by Carlos Barraza
 
 @1 Arrowslit=Aspillera de @1
 @1 Arrowslit with Cross=Aspillera con Crus de @1
@@ -47,4 +48,3 @@ Stone Wall=Pared de Piedra
 Stonebrick=Ladrillo de Piedra
 Stonewall=Pared de piedra
 Wood=Madera
-##### not used anymore #####

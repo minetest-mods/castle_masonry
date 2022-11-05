@@ -8,19 +8,7 @@ dofile(MP.."/stone_wall.lua")
 dofile(MP.."/paving.lua")
 
 
--- Used for localization, choose either built-in or intllib.
-
-local S, NS = nil
-
-if (minetest.get_modpath("intllib") == nil) then
-	S = minetest.get_translator("castle_masonry")
-
-else
-	-- internationalization boilerplate
-	S, NS = dofile(MP.."/intllib.lua")
-
-end
-
+local S = minetest.get_translator("castle_masonry")
 
 local read_setting = function(name, default)
 	local setting = minetest.settings:get_bool(name)
