@@ -127,25 +127,27 @@ minetest.register_alias("castle:arrowslit", "castle_masonry:arrowslit_stonewall"
 minetest.register_alias("castle:arrowslit_hole", "castle_masonry:arrowslit_stonewall_hole")
 minetest.register_alias("castle:arrowslit_cross", "castle_masonry:arrowslit_stonewall_cross")
 
-for _, material in pairs(castle_masonry.materials) do
-	castle_masonry.register_murderhole_alias("castle", material.name, "castle_masonry", material.name)
-	castle_masonry.register_pillar_alias("castle", material.name, "castle_masonry", material.name)
+if read_setting("castle_masonry_upgrade_lbm", true) then
+	for _, material in pairs(castle_masonry.materials) do
+		castle_masonry.register_murderhole_alias("castle", material.name, "castle_masonry", material.name)
+		castle_masonry.register_pillar_alias("castle", material.name, "castle_masonry", material.name)
 
-	-- Arrowslit upgrade has special handling because the castle mod arrow slit is reversed relative to current build-from-inside standard
-	local lbm_def = {
-		name = "castle_masonry:arrowslit_flip_front_to_back"..material.name,
-		run_at_every_load = false,
-		nodenames = {
-			"castle:arrowslit_"..material.name,
-			"castle:arrowslit_"..material.name.."_cross",
-			"castle:arrowslit_"..material.name.."_hole",
-		},
-		action = function(pos, node)
-			local flip_front_to_back = {[0]=2, 3, 0, 1, 6, 7, 4, 5, 10, 7, 8, 9, 14, 15, 12, 13, 18, 19, 16, 17, 22, 23, 20, 21}
-			node.param2 = flip_front_to_back[node.param2]
-			node.name = "castle_masonry" .. string.sub(node.name, 7, -1)
-			minetest.swap_node(pos, node)
-		end
-	}
-	minetest.register_lbm(lbm_def)
+		-- Arrowslit upgrade has special handling because the castle mod arrow slit is reversed relative to current build-from-inside standard
+		local lbm_def = {
+			name = "castle_masonry:arrowslit_flip_front_to_back"..material.name,
+			run_at_every_load = false,
+			nodenames = {
+				"castle:arrowslit_"..material.name,
+				"castle:arrowslit_"..material.name.."_cross",
+				"castle:arrowslit_"..material.name.."_hole",
+			},
+			action = function(pos, node)
+				local flip_front_to_back = {[0]=2, 3, 0, 1, 6, 7, 4, 5, 10, 7, 8, 9, 14, 15, 12, 13, 18, 19, 16, 17, 22, 23, 20, 21}
+				node.param2 = flip_front_to_back[node.param2]
+				node.name = "castle_masonry" .. string.sub(node.name, 7, -1)
+				minetest.swap_node(pos, node)
+			end
+		}
+		minetest.register_lbm(lbm_def)
+	end
 end
