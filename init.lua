@@ -101,7 +101,7 @@ if minetest.get_modpath("mcl_core") then
 	if read_setting("castle_masonry_sandstone", true) then
 		table.insert(castle_masonry.materials, {name="sandstone", desc=S("Sandstone"), craft_material="mcl_core:sandstone"})
 	end
-	if read_setting("castle_masonry_desertsandstone", true) then
+	if read_setting("castle_masonry_redsandstone", true) then
 		table.insert(castle_masonry.materials, {name="redsandstone", desc=S("Red Sandstone"), craft_material="mcl_core:redsandstone"})
 	end
 	if read_setting("castle_masonry_wood", false) then

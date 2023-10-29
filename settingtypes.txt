@@ -16,6 +16,9 @@ castle_masonry_wood (Wood) bool false
 castle_masonry_ice (Ice) bool false
 castle_masonry_snow (Snow) bool false
 castle_masonry_obsidianbrick (Obsidian Brick) bool false
+castle_masonry_redsandstone (Red Sandstone) bool true
+castle_masonry_quartz (Quartz) bool true
+castle_masonry_blackstone (Blackstone) bool true
 
 [Forms]
 
