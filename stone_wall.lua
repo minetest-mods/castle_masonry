@@ -20,7 +20,7 @@ minetest.register_node("castle_masonry:stonewall", {
 	paramtype = "light",
 	drop = "castle_masonry:stonewall",
 	groups = {cracky=3, pickaxey=1},
-	_mcl_hardness = 0.8,
+	_mcl_hardness = 1,
 	_mcl_blast_resistance = 1,
 	sunlight_propagates = false,
 	sounds = castle_masonry.sounds.node_sound_stone_defaults(),
@@ -31,7 +31,9 @@ minetest.register_node("castle_masonry:rubble", {
 	drawtype = "normal",
 	tiles = {"castle_rubble.png"},
 	paramtype = "light",
-	groups = {crumbly=3,falling_node=1},
+	groups = {crumbly=3, shovely=1, falling_node=1},
+	_mcl_hardness = 0.8,
+	_mcl_blast_resistance = 1,
 	sounds = castle_masonry.sounds.node_sound_gravel_defaults(),
 })
 
@@ -70,7 +72,7 @@ minetest.register_node("castle_masonry:stonewall_corner", {
 		 "castle_stonewall.png",	
 		 "castle_corner_stonewall2.png"},
 	groups = {cracky=3, pickaxey=1},
-	_mcl_hardness = 0.8,
+	_mcl_hardness = 1,
 	_mcl_blast_resistance = 1,
 	sounds = castle_masonry.sounds.node_sound_stone_defaults(),
 })
@@ -98,8 +100,6 @@ if minetest.get_modpath("moreblocks") then
 		description = S("Rubble"),
 		tiles = {"castle_rubble.png"},
 		groups = {cracky=3, pickaxey=1, not_in_creative_inventory=1},
-		_mcl_hardness = 0.8,
-		_mcl_blast_resistance = 1,
 		sounds = castle_masonry.sounds.node_sound_gravel_defaults(),
 		sunlight_propagates = true,
 	})
@@ -107,6 +107,22 @@ if minetest.get_modpath("moreblocks") then
 	stairsplus:register_alias_all("castle", "stonewall", "castle_masonry", "stonewall")
 	stairsplus:register_alias_all("castle", "rubble", "castle_masonry", "rubble")
 
+elseif minetest.get_modpath("mcl_stairs") then
+	mcl_stairs.register_stair_and_slab("stonewall", "castle_masonry:stonewall",
+		{pickaxey=1},
+		{"castle_stonewall.png"},
+		S("Castle Stonewall Stair"),
+		S("Castle Stonewall Slab"),
+		castle_masonry.sounds.node_sound_stone_defaults()
+	)
+
+	mcl_stairs.register_stair_and_slab("rubble", "castle_masonry:rubble",
+		{shovely=1},
+		{"castle_rubble.png"},
+		S("Castle Rubble Stair"),
+		S("Castle Rubble Slab"),
+		castle_masonry.sounds.node_sound_gravel_defaults()
+	)
 elseif minetest.get_modpath("stairs") then
 	stairs.register_stair_and_slab("stonewall", "castle_masonry:stonewall",
 		{cracky=3, pickaxey=1},
@@ -117,7 +133,7 @@ elseif minetest.get_modpath("stairs") then
 	)
 
 	stairs.register_stair_and_slab("rubble", "castle_masonry:rubble",
-		{cracky=3, pickaxey=1},
+		{cracky=3},
 		{"castle_rubble.png"},
 		S("Castle Rubble Stair"),
 		S("Castle Rubble Slab"),
@@ -132,7 +148,7 @@ minetest.register_node("castle_masonry:dungeon_stone", {
 	drawtype = "normal",
 	tiles = {"castle_dungeon_stone.png"},
 	groups = {cracky=2, pickaxey=2},
-	_mcl_hardness = 0.8,
+	_mcl_hardness = 1,
 	_mcl_blast_resistance = 1,
 	paramtype = "light",
 	sounds = castle_masonry.sounds.node_sound_stone_defaults(),
@@ -159,14 +175,20 @@ if minetest.get_modpath("moreblocks") then
 		description = S("Dungeon Stone"),
 		tiles = {"castle_dungeon_stone.png"},
 		groups = {cracky=2, pickaxey=2, not_in_creative_inventory=1},
-		_mcl_hardness = 0.8,
-		_mcl_blast_resistance = 1,
 		sounds = castle_masonry.sounds.node_sound_stone_defaults(),
 		sunlight_propagates = true,
 	})
 
 	stairsplus:register_alias_all("castle", "dungeon_stone", "castle_masonry", "dungeon_stone")
-	
+
+elseif minetest.get_modpath("mcl_stairs") then
+	mcl_stairs.register_stair_and_slab("dungeon_stone", "castle_masonry:dungeon_stone",
+		{pickaxey=2},
+		{"castle_dungeon_stone.png"},
+		S("Dungeon Stone Stair"),
+		S("Dungeon Stone Slab"),
+		castle_masonry.sounds.node_sound_stone_defaults()
+	)
 elseif minetest.get_modpath("stairs") then
 	stairs.register_stair_and_slab("dungeon_stone", "castle_masonry:dungeon_stone",
 		{cracky=2, pickaxey=2},
