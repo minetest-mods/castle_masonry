@@ -23,7 +23,7 @@ local S = minetest.get_translator("castle_masonry")
 
 local read_setting = function(name, default)
 	local setting = minetest.settings:get_bool(name)
-	if setting == nil then return default end
+	if not setting then return default end
 	return setting
 end
 
@@ -39,7 +39,7 @@ end
 castle_masonry.materials = {}
 
 local function register_material(def, setting_default)
-	if read_setting("castle_masonry_" .. def.name, setting_default or false) then
+	if read_setting("castle_masonry_" .. def.name, setting_default) then
 		table.insert(castle_masonry.materials, def)
 	end
 end
