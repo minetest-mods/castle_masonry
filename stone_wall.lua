@@ -6,6 +6,7 @@ local desert_stone = has_mcl and "mcl_core:redsandstone" or "default:desert_ston
 local sandstone = has_mcl and "mcl_core:sandstone" or "default:sandstone"
 local stonebrick = has_mcl and "mcl_core:stonebrick" or "default:stonebrick"
 local obsidian = has_mcl and "mcl_core:obsidian" or "default:obsidian"
+local cobble = has_mcl and "mcl_core:cobble" or "default:cobble"
 
 
 minetest.register_alias("castle:stonewall",         "castle_masonry:stonewall")
@@ -40,7 +41,7 @@ minetest.register_node("castle_masonry:rubble", {
 minetest.register_craft({
 	output = "castle_masonry:stonewall",
 	recipe = {
-		{"group:cobble"},
+		{cobble},
 		{desert_stone},
 	}
 })

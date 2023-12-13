@@ -3,7 +3,8 @@ minetest.register_alias("castle:pavement_brick",	"castle_masonry:pavement_brick"
 minetest.register_alias("castle:roofslate",			"castle_masonry:roofslate")
 
 local S = minetest.get_translator("castle_masonry")
-
+local has_mcl = minetest.get_modpath("mcl_core")
+local cobble = has_mcl and "mcl_core:cobble" or "default:cobble"
 
 
 minetest.register_node("castle_masonry:pavement_brick", {
@@ -20,8 +21,8 @@ minetest.register_node("castle_masonry:pavement_brick", {
 minetest.register_craft({
 	output = "castle_masonry:pavement_brick 4",
 	recipe = {
-		{"group:stone", "group:cobble"},
-		{"group:cobble", "group:stone"},
+		{"group:stone", cobble},
+		{cobble, "group:stone"},
 	}
 })
 
