@@ -76,7 +76,7 @@ if minetest.get_modpath("mcl_core") then
 	register_material({name="sandstone", desc=S("Sandstone"), craft_material="mcl_core:sandstone"}, true)
 	register_material({name="redsandstone", desc=S("Red Sandstone"), craft_material="mcl_core:redsandstone"}, true)
 end
--- wood ids are different in MineClonia and Mineclone2
+-- wood ids are different in MineClonia and Mineclone2, mcl_trees is part of MineClonia
 if minetest.get_modpath("mcl_trees") then
 	register_material({name="wood", desc=S("Wood"), craft_material="group:wood", composition_material="mcl_trees:wood_oak"})
 elseif minetest.get_modpath("mcl_core") then
