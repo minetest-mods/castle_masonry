@@ -11,7 +11,7 @@ minetest.register_node("castle_masonry:pavement_brick", {
 	description = S("Paving Stone"),
 	drawtype = "normal",
 	tiles = {"castle_pavement_brick.png"},
-	groups = {cracky=2, pickaxey=2},
+	groups = {cracky=2, pickaxey=2, stonecuttable=1},
 	_mcl_hardness = 1,
 	_mcl_blast_resistance = 1,
 	paramtype = "light",
