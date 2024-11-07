@@ -71,7 +71,7 @@ if minetest.get_modpath("mcl_core") then
 	register_material({name="cobble", desc=S("Cobble"), craft_material="group:cobble", composition_material="mcl_core:cobble"}, true)
 	register_material({name="stonebrick", desc=S("Stonebrick"), craft_material="mcl_core:stonebrick"}, true)
 	register_material({name="stone", desc=S("Stone"), craft_material="group:stone", composition_material="mcl_core:stone"}, true)
-	register_material({name="ice", desc=S("Ice"), craft_material="mcl_core:ice"})
+	register_material({name="ice", desc=S("Ice"), craft_material="mcl_core:packed_ice"})
 	register_material({name="snow", desc=S("Snow"), craft_material="mcl_core:snowblock"})
 	register_material({name="sandstone", desc=S("Sandstone"), craft_material="mcl_core:sandstone"}, true)
 	register_material({name="redsandstone", desc=S("Red Sandstone"), craft_material="mcl_core:redsandstone"}, true)
