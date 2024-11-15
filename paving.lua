@@ -11,7 +11,7 @@ minetest.register_node("castle_masonry:pavement_brick", {
 	description = S("Paving Stone"),
 	drawtype = "normal",
 	tiles = {"castle_pavement_brick.png"},
-	groups = {cracky=2, pickaxey=2},
+	groups = {cracky=2, pickaxey=2, stonecuttable=1},
 	_mcl_hardness = 1,
 	_mcl_blast_resistance = 1,
 	paramtype = "light",
@@ -37,13 +37,14 @@ if minetest.get_modpath("moreblocks") then
 	})
 	stairsplus:register_alias_all("castle", "pavement_brick", "castle_masonry", "pavement_brick")
 elseif minetest.get_modpath("mcl_stairs") then
-	mcl_stairs.register_stair_and_slab("pavement_brick", "castle_masonry:pavement_brick",
-		{pickaxey=2},
-		{"castle_pavement_brick.png"},
-		S("Castle Pavement Stair"),
-		S("Castle Pavement Slab"),
-		castle_masonry.sounds.node_sound_stone_defaults()
-	)
+	mcl_stairs.register_stair_and_slab("pavement_brick", {
+		baseitem = "castle_masonry:pavement_brick",
+		description = S("Castle Pavement"),
+		groups = {pickaxey=2, stonecuttable=1},
+		overrides = {
+			_mcl_stonecutter_recipes = {"castle_masonry:pavement_brick"}
+		},
+	})
 elseif minetest.get_modpath("stairs") then
 	stairs.register_stair_and_slab("pavement_brick", "castle_masonry:pavement_brick",
 		{cracky=2},
