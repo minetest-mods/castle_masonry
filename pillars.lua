@@ -7,11 +7,11 @@ castle_masonry.register_pillar = function(material)
 	local crossbrace_connectable_groups = {}
 	for group, val in pairs(composition_def.groups) do
 		crossbrace_connectable_groups[group] = val
-	end	
+	end
 	crossbrace_connectable_groups.crossbrace_connectable = 1
 
 	local mod_name = minetest.get_current_modname()
-	
+
 	-- Node Definition
 	minetest.register_node(mod_name..":pillar_"..material.name.."_bottom", {
 		drawtype = "nodebox",
@@ -29,7 +29,7 @@ castle_masonry.register_pillar = function(material)
 			fixed = {
 				{-0.5,-0.5,-0.5,0.5,-0.375,0.5},
 				{-0.375,-0.375,-0.375,0.375,-0.125,0.375},
-				{-0.25,-0.125,-0.25,0.25,0.5,0.25}, 
+				{-0.25,-0.125,-0.25,0.25,0.5,0.25},
 			},
 		},
 	})
@@ -54,7 +54,7 @@ castle_masonry.register_pillar = function(material)
 			},
 		},
 	})
-	
+
 	minetest.register_node(mod_name..":pillar_"..material.name.."_top", {
 		drawtype = "nodebox",
 		description = S("@1 Pillar Top", desc),
@@ -69,8 +69,8 @@ castle_masonry.register_pillar = function(material)
 		node_box = {
 			type = "fixed",
 			fixed = {
-				{-0.5,0.3125,-0.5,0.5,0.5,0.5}, 
-				{-0.375,0.0625,-0.375,0.375,0.3125,0.375}, 
+				{-0.5,0.3125,-0.5,0.5,0.5,0.5},
+				{-0.375,0.0625,-0.375,0.375,0.3125,0.375},
 				{-0.25,-0.5,-0.25,0.25,0.0625,0.25},
 			},
 		},
@@ -95,7 +95,7 @@ castle_masonry.register_pillar = function(material)
 				{-0.25, -0.5, 0.25, 0.25, 0.0625, 0.5},
 			},
 		},
-	})	
+	})
 
 	minetest.register_node(mod_name..":pillar_"..material.name.."_middle", {
 		drawtype = "nodebox",
@@ -134,7 +134,7 @@ castle_masonry.register_pillar = function(material)
 			},
 		},
 	})
-	
+
 	minetest.register_node(mod_name..":pillar_"..material.name.."_crossbrace",
 	{
 		drawtype = "nodebox",
@@ -161,7 +161,7 @@ castle_masonry.register_pillar = function(material)
 			"group:crossbrace_connectable"},
 		connect_sides = { "front", "left", "back", "right" },
 	})
-	
+
 	minetest.register_node(mod_name..":pillar_"..material.name.."_extended_crossbrace",
 	{
 		drawtype = "nodebox",
@@ -179,7 +179,7 @@ castle_masonry.register_pillar = function(material)
 			fixed = {-1.25,0.25,-0.25,1.25,0.5,0.25},
 		},
 	})
-	
+
 	minetest.register_craft({
 		output = mod_name..":pillar_"..material.name.."_bottom 4",
 		recipe = {
@@ -203,7 +203,7 @@ castle_masonry.register_pillar = function(material)
 			{material.craft_material},
 			{material.craft_material} },
 	})
-	
+
 	minetest.register_craft({
 		output = mod_name..":pillar_"..material.name.."_crossbrace 10",
 		recipe = {
@@ -211,7 +211,7 @@ castle_masonry.register_pillar = function(material)
 			{"",material.craft_material,""},
 			{material.craft_material,"",material.craft_material} },
 	})
-	
+
 	minetest.register_craft({
 		output = mod_name..":pillar_"..material.name.."_middle_half 2",
 		type="shapeless",
@@ -244,7 +244,7 @@ castle_masonry.register_pillar = function(material)
 		type="shapeless",
 		recipe = {mod_name..":pillar_"..material.name.."_bottom_half", mod_name..":pillar_"..material.name.."_bottom_half"},
 	})
-	
+
 	minetest.register_craft({
 		output = mod_name..":pillar_"..material.name.."_extended_crossbrace",
 		type="shapeless",
@@ -256,13 +256,13 @@ castle_masonry.register_pillar = function(material)
 		type="shapeless",
 		recipe = {mod_name..":pillar_"..material.name.."_extended_crossbrace"},
 	})
-	
+
 	if burn_time > 0 then
 		minetest.register_craft({
 			type = "fuel",
 			recipe = mod_name..":pillar_"..material.name.."_top",
 			burntime = burn_time*5/4,
-		})	
+		})
 		minetest.register_craft({
 			type = "fuel",
 			recipe = mod_name..":pillar_"..material.name.."_top_half",
@@ -272,12 +272,12 @@ castle_masonry.register_pillar = function(material)
 			type = "fuel",
 			recipe = mod_name..":pillar_"..material.name.."_bottom",
 			burntime = burn_time*5/4,
-		})	
+		})
 		minetest.register_craft({
 			type = "fuel",
 			recipe = mod_name..":pillar_"..material.name.."_bottom_half",
 			burntime = burn_time*5/8,
-		})	
+		})
 		minetest.register_craft({
 			type = "fuel",
 			recipe = mod_name..":pillar_"..material.name.."_middle",
@@ -299,7 +299,7 @@ castle_masonry.register_pillar = function(material)
 			burntime = burn_time*5/10,
 		})
 	end
-	
+
 end
 
 -- The original castle mod had "pillars_", plural, which didn't match the arrowslit and murderhole standard.

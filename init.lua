@@ -31,9 +31,12 @@ end
 -- {
 --	name=, -- the name that will be part of the resulting node names
 --	desc=, -- Player-facing name of the material
---	tile=, -- Optional - the texture tile to use for the resulting blocks (can be a single texture or a table, as a normal node definition's tile def). If not set this will be taken from the material it's made out of.
+--	tile=, -- Optional - the texture tile to use for the resulting blocks
+--            (can be a single texture or a table, as a normal node definition's tile def).
+--            If not set this will be taken from the material it's made out of.
 --	craft_material=, -- What source block is used to craft these blocks.
---	composition_material=, -- Optional, this will override the properties of the product with a specific material. Useful if you want to use a group for the craft material (eg, "group:wood")
+--	composition_material=, -- Optional, this will override the properties of the product with
+--            a specific material. Useful if you want to use a group for the craft material (eg, "group:wood")
 --}
 
 castle_masonry.materials = {}
@@ -150,7 +153,8 @@ for _, material in pairs(castle_masonry.materials) do
 	castle_masonry.register_murderhole_alias("castle", material.name, "castle_masonry", material.name)
 	castle_masonry.register_pillar_alias("castle", material.name, "castle_masonry", material.name)
 
-	-- Arrowslit upgrade has special handling because the castle mod arrow slit is reversed relative to current build-from-inside standard
+	-- Arrowslit upgrade has special handling because the castle mod arrow slit
+	-- is reversed relative to current build-from-inside standard
 	local lbm_def = {
 		name = "castle_masonry:arrowslit_flip_front_to_back"..material.name,
 		run_at_every_load = false,

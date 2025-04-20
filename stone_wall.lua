@@ -70,7 +70,7 @@ minetest.register_node("castle_masonry:stonewall_corner", {
 		 "castle_corner_stonewall_tb.png^[transformR180",
 		 "castle_corner_stonewall1.png",
 		 "castle_stonewall.png",
-		 "castle_stonewall.png",	
+		 "castle_stonewall.png",
 		 "castle_corner_stonewall2.png"},
 	groups = {cracky=3, pickaxey=1},
 	_mcl_hardness = 1,
@@ -105,7 +105,7 @@ if minetest.get_modpath("moreblocks") then
 		sounds = castle_masonry.sounds.node_sound_gravel_defaults(),
 		sunlight_propagates = true,
 	})
-	
+
 	stairsplus:register_alias_all("castle", "stonewall", "castle_masonry", "stonewall")
 	stairsplus:register_alias_all("castle", "rubble", "castle_masonry", "rubble")
 

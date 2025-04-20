@@ -23,8 +23,8 @@ castle_masonry.register_arrowslit = function(material)
 			fixed = {
 				{-0.5, -0.375, 0.5, -0.0625, 0.375, 0.3125},
 				{0.0625, -0.375, 0.5, 0.5, 0.375, 0.3125},
-				{-0.5, 0.375, 0.5, 0.5, 0.5, 0.3125}, 
-				{-0.5, -0.5, 0.5, 0.5, -0.375, 0.3125}, 
+				{-0.5, 0.375, 0.5, 0.5, 0.5, 0.3125},
+				{-0.5, -0.5, 0.5, 0.5, -0.375, 0.3125},
 				{0.25, -0.5, 0.3125, 0.5, 0.5, 0.125},
 				{-0.5, -0.5, 0.3125, -0.25, 0.5, 0.125},
 			},
@@ -108,7 +108,7 @@ castle_masonry.register_arrowslit = function(material)
 			},
 		},
 	})
-	
+
 	minetest.register_craft({
 		output = mod_name..":arrowslit_"..material.name.." 6",
 		recipe = {
@@ -137,28 +137,28 @@ castle_masonry.register_arrowslit = function(material)
 		recipe = {
 		{mod_name..":arrowslit_"..material.name.."_embrasure"} },
 	})
-	
+
 	if burn_time > 0 then
 		minetest.register_craft({
 			type = "fuel",
 			recipe = mod_name..":arrowslit_"..material.name,
 			burntime = burn_time,
-		})	
+		})
 		minetest.register_craft({
 			type = "fuel",
 			recipe = mod_name..":arrowslit_"..material.name.."_cross",
 			burntime = burn_time,
-		})	
+		})
 		minetest.register_craft({
 			type = "fuel",
 			recipe = mod_name..":arrowslit_"..material.name.."_hole",
 			burntime = burn_time,
-		})	
+		})
 		minetest.register_craft({
 			type = "fuel",
 			recipe = mod_name..":arrowslit_"..material.name.."_embrasure",
 			burntime = burn_time,
-		})	
+		})
 	end
 end
 

@@ -2,11 +2,15 @@
 
 by: Philipbenr, DanDuncombe, FaceDeer
 
-Licence: MIT
+![screenshot](screenshot.png)
 
 This is a mod all about creating castles and castle dungeons. Many of the nodes are used for the outer-walls or dungeons.
 
-Contains:
+**Licence:** [MIT](LICENSE)
+
+**ContentDB:** [FaceDeer/castle_masonry](https://content.luanti.org/packages/FaceDeer/castle_masonry/)
+
+### Features
 
 * Walls, Corner-walls,
 * Castlestone Stairs, Slabs, and Pillars

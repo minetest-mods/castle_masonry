@@ -76,7 +76,6 @@ minetest.register_node("castle_masonry:roofslate", {
 
 local mod_building_blocks = minetest.get_modpath("building_blocks")
 local mod_streets = minetest.get_modpath("streets") or minetest.get_modpath("asphalt")
-local has_mcl = minetest.get_modpath("mcl_core")
 local gravel = has_mcl and "mcl_core:gravel" or "default:gravel"
 
 if mod_building_blocks then
