@@ -1,6 +1,18 @@
 
 local S = minetest.get_translator("castle_masonry")
 
+assert(table.insert_all, "Your Luanti/Minetest version is too old or uses an incomplete version of 'builtin'")
+
+local function copy_merge(template, overwrites)
+	local out = {}
+	for k, v in pairs(template) do
+		out[k] = v
+	end
+	for k, v in pairs(overwrites) do
+		out[k] = v
+	end
+	return out
+end
 
 castle_masonry.register_pillar = function(material)
 	local composition_def, burn_time, tile, desc = castle_masonry.get_material_properties(material)
@@ -11,19 +23,26 @@ castle_masonry.register_pillar = function(material)
 	crossbrace_connectable_groups.crossbrace_connectable = 1
 
 	local mod_name = minetest.get_current_modname()
+	local name_prefix = mod_name .. ":pillar_" .. material.name
 
 	-- Node Definition
-	minetest.register_node(mod_name..":pillar_"..material.name.."_bottom", {
+	local template = {
 		drawtype = "nodebox",
-		description = S("@1 Pillar Base", desc),
+		-- groups: Intentionally generate an error if not overwritten:
+		--    bad argument #7 to 'register_item_raw' (table expected, got boolean)
+		groups = true,
+		paramtype = "light",
+		paramtype2 = "facedir",
+		sounds = composition_def.sounds,
 		tiles = tile,
-		groups = crossbrace_connectable_groups,
 		_mcl_hardness = composition_def._mcl_hardness or 0.8,
 		_mcl_blast_resistance = composition_def._mcl_blast_resistance or 1,
 		_mcl_stonecutter_recipes = {material.composition_material or material.craft_material},
-		sounds = composition_def.sounds,
-		paramtype = "light",
-		paramtype2 = "facedir",
+	}
+
+	core.register_node(name_prefix .. "_bottom", copy_merge(template, {
+		description = S("@1 Pillar Base", desc),
+		groups = crossbrace_connectable_groups,
 		node_box = {
 			type = "fixed",
 			fixed = {
@@ -32,19 +51,11 @@ castle_masonry.register_pillar = function(material)
 				{-0.25,-0.125,-0.25,0.25,0.5,0.25},
 			},
 		},
-	})
+	}))
 
-	minetest.register_node(mod_name..":pillar_"..material.name.."_bottom_half", {
-		drawtype = "nodebox",
+	core.register_node(name_prefix.."_bottom_half", copy_merge(template, {
 		description = S("@1 Half Pillar Base", desc),
-		tiles = tile,
 		groups = composition_def.groups,
-		_mcl_hardness = composition_def._mcl_hardness or 0.8,
-		_mcl_blast_resistance = composition_def._mcl_blast_resistance or 1,
-		_mcl_stonecutter_recipes = {material.composition_material or material.craft_material},
-		sounds = composition_def.sounds,
-		paramtype = "light",
-		paramtype2 = "facedir",
 		node_box = {
 			type = "fixed",
 			fixed = {
@@ -53,19 +64,11 @@ castle_masonry.register_pillar = function(material)
 				{-0.25, -0.125, 0.25, 0.25, 0.5, 0.5},
 			},
 		},
-	})
+	}))
 
-	minetest.register_node(mod_name..":pillar_"..material.name.."_top", {
-		drawtype = "nodebox",
+	core.register_node(name_prefix .. "_top", copy_merge(template, {
 		description = S("@1 Pillar Top", desc),
-		tiles = tile,
 		groups = crossbrace_connectable_groups,
-		_mcl_hardness = composition_def._mcl_hardness or 0.8,
-		_mcl_blast_resistance = composition_def._mcl_blast_resistance or 1,
-		_mcl_stonecutter_recipes = {material.composition_material or material.craft_material},
-		sounds = composition_def.sounds,
-		paramtype = "light",
-		paramtype2 = "facedir",
 		node_box = {
 			type = "fixed",
 			fixed = {
@@ -74,19 +77,11 @@ castle_masonry.register_pillar = function(material)
 				{-0.25,-0.5,-0.25,0.25,0.0625,0.25},
 			},
 		},
-	})
+	}))
 
-	minetest.register_node(mod_name..":pillar_"..material.name.."_top_half", {
-		drawtype = "nodebox",
+	core.register_node(name_prefix .. "_top_half", copy_merge(template, {
 		description = S("@1 Half Pillar Top", desc),
-		tiles = tile,
 		groups = composition_def.groups,
-		_mcl_hardness = composition_def._mcl_hardness or 0.8,
-		_mcl_blast_resistance = composition_def._mcl_blast_resistance or 1,
-		_mcl_stonecutter_recipes = {material.composition_material or material.craft_material},
-		sounds = composition_def.sounds,
-		paramtype = "light",
-		paramtype2 = "facedir",
 		node_box = {
 			type = "fixed",
 			fixed = {
@@ -95,58 +90,33 @@ castle_masonry.register_pillar = function(material)
 				{-0.25, -0.5, 0.25, 0.25, 0.0625, 0.5},
 			},
 		},
-	})
+	}))
 
-	minetest.register_node(mod_name..":pillar_"..material.name.."_middle", {
-		drawtype = "nodebox",
+	core.register_node(name_prefix .. "_middle", copy_merge(template, {
 		description = S("@1 Pillar Middle", desc),
-		tiles = tile,
 		groups = crossbrace_connectable_groups,
-		_mcl_hardness = composition_def._mcl_hardness or 0.8,
-		_mcl_blast_resistance = composition_def._mcl_blast_resistance or 1,
-		_mcl_stonecutter_recipes = {material.composition_material or material.craft_material},
-		sounds = composition_def.sounds,
-		paramtype = "light",
-		paramtype2 = "facedir",
 		node_box = {
 			type = "fixed",
 			fixed = {
 				{-0.25,-0.5,-0.25,0.25,0.5,0.25},
 			},
 		},
-	})
+	}))
 
-	minetest.register_node(mod_name..":pillar_"..material.name.."_middle_half", {
-		drawtype = "nodebox",
+	core.register_node(name_prefix .. "_middle_half", copy_merge(template, {
 		description = S("@1 Half Pillar Middle", desc),
-		tiles = tile,
 		groups = composition_def.groups,
-		_mcl_hardness = composition_def._mcl_hardness or 0.8,
-		_mcl_blast_resistance = composition_def._mcl_blast_resistance or 1,
-		_mcl_stonecutter_recipes = {material.composition_material or material.craft_material},
-		sounds = composition_def.sounds,
-		paramtype = "light",
-		paramtype2 = "facedir",
 		node_box = {
 			type = "fixed",
 			fixed = {
 				{-0.25, -0.5, 0.25, 0.25, 0.5, 0.5},
 			},
 		},
-	})
+	}))
 
-	minetest.register_node(mod_name..":pillar_"..material.name.."_crossbrace",
-	{
-		drawtype = "nodebox",
+	core.register_node(name_prefix .. "_crossbrace", copy_merge(template, {
 		description = S("@1 Crossbrace", desc),
-		tiles = tile,
 		groups = composition_def.groups,
-		_mcl_hardness = composition_def._mcl_hardness or 0.8,
-		_mcl_blast_resistance = composition_def._mcl_blast_resistance or 1,
-		_mcl_stonecutter_recipes = {material.composition_material or material.craft_material},
-		sounds = composition_def.sounds,
-		paramtype = "light",
-		paramtype2 = "facedir",
 		node_box = {
 			type = "connected",
 			fixed = {-0.25,0.25,-0.25,0.25,0.5,0.25},
@@ -156,32 +126,23 @@ castle_masonry.register_pillar = function(material)
 			connect_right = {0.25,0.25,-0.25,0.75,0.5,0.25}, -- +X
 		},
 		connects_to = {
-			mod_name..":pillar_"..material.name.."_crossbrace",
-			mod_name..":pillar_"..material.name.."_extended_crossbrace",
+			name_prefix.."_crossbrace",
+			name_prefix.."_extended_crossbrace",
 			"group:crossbrace_connectable"},
 		connect_sides = { "front", "left", "back", "right" },
-	})
+	}))
 
-	minetest.register_node(mod_name..":pillar_"..material.name.."_extended_crossbrace",
-	{
-		drawtype = "nodebox",
+	core.register_node(name_prefix .. "_extended_crossbrace", copy_merge(template, {
 		description = S("@1 Extended Crossbrace", desc),
-		tiles = tile,
 		groups = composition_def.groups,
-		_mcl_hardness = composition_def._mcl_hardness or 0.8,
-		_mcl_blast_resistance = composition_def._mcl_blast_resistance or 1,
-		_mcl_stonecutter_recipes = {material.composition_material or material.craft_material},
-		sounds = composition_def.sounds,
-		paramtype = "light",
-		paramtype2 = "facedir",
 		node_box = {
 			type = "fixed",
 			fixed = {-1.25,0.25,-0.25,1.25,0.5,0.25},
 		},
-	})
+	}))
 
 	minetest.register_craft({
-		output = mod_name..":pillar_"..material.name.."_bottom 4",
+		output = name_prefix.."_bottom 4",
 		recipe = {
 			{"",material.craft_material,""},
 			{"",material.craft_material,""},
@@ -189,7 +150,7 @@ castle_masonry.register_pillar = function(material)
 	})
 
 	minetest.register_craft({
-		output = mod_name..":pillar_"..material.name.."_top 4",
+		output = name_prefix.."_top 4",
 		recipe = {
 			{material.craft_material,material.craft_material,material.craft_material},
 			{"",material.craft_material,""},
@@ -197,7 +158,7 @@ castle_masonry.register_pillar = function(material)
 	})
 
 	minetest.register_craft({
-		output = mod_name..":pillar_"..material.name.."_middle 2",
+		output = name_prefix.."_middle 2",
 		recipe = {
 			{material.craft_material},
 			{material.craft_material},
@@ -205,7 +166,7 @@ castle_masonry.register_pillar = function(material)
 	})
 
 	minetest.register_craft({
-		output = mod_name..":pillar_"..material.name.."_crossbrace 10",
+		output = name_prefix.."_crossbrace 10",
 		recipe = {
 			{material.craft_material,"",material.craft_material},
 			{"",material.craft_material,""},
@@ -213,126 +174,127 @@ castle_masonry.register_pillar = function(material)
 	})
 
 	minetest.register_craft({
-		output = mod_name..":pillar_"..material.name.."_middle_half 2",
+		output = name_prefix.."_middle_half 2",
 		type="shapeless",
-		recipe = {mod_name..":pillar_"..material.name.."_middle"},
+		recipe = {name_prefix.."_middle"},
 	})
 	minetest.register_craft({
-		output = mod_name..":pillar_"..material.name.."_middle",
+		output = name_prefix.."_middle",
 		type="shapeless",
-		recipe = {mod_name..":pillar_"..material.name.."_middle_half", mod_name..":pillar_"..material.name.."_middle_half"},
-	})
-
-	minetest.register_craft({
-		output = mod_name..":pillar_"..material.name.."_top_half 2",
-		type="shapeless",
-		recipe = {mod_name..":pillar_"..material.name.."_top"},
-	})
-	minetest.register_craft({
-		output = mod_name..":pillar_"..material.name.."_top",
-		type="shapeless",
-		recipe = {mod_name..":pillar_"..material.name.."_top_half", mod_name..":pillar_"..material.name.."_top_half"},
+		recipe = {name_prefix.."_middle_half", name_prefix.."_middle_half"},
 	})
 
 	minetest.register_craft({
-		output = mod_name..":pillar_"..material.name.."_bottom_half 2",
+		output = name_prefix.."_top_half 2",
 		type="shapeless",
-		recipe = {mod_name..":pillar_"..material.name.."_bottom"},
+		recipe = {name_prefix.."_top"},
 	})
 	minetest.register_craft({
-		output = mod_name..":pillar_"..material.name.."_bottom",
+		output = name_prefix.."_top",
 		type="shapeless",
-		recipe = {mod_name..":pillar_"..material.name.."_bottom_half", mod_name..":pillar_"..material.name.."_bottom_half"},
-	})
-
-	minetest.register_craft({
-		output = mod_name..":pillar_"..material.name.."_extended_crossbrace",
-		type="shapeless",
-		recipe = {mod_name..":pillar_"..material.name.."_crossbrace"},
+		recipe = {name_prefix.."_top_half", name_prefix.."_top_half"},
 	})
 
 	minetest.register_craft({
-		output = mod_name..":pillar_"..material.name.."_crossbrace",
+		output = name_prefix.."_bottom_half 2",
 		type="shapeless",
-		recipe = {mod_name..":pillar_"..material.name.."_extended_crossbrace"},
+		recipe = {name_prefix.."_bottom"},
+	})
+	minetest.register_craft({
+		output = name_prefix.."_bottom",
+		type="shapeless",
+		recipe = {name_prefix.."_bottom_half", name_prefix.."_bottom_half"},
+	})
+
+	minetest.register_craft({
+		output = name_prefix.."_extended_crossbrace",
+		type="shapeless",
+		recipe = {name_prefix.."_crossbrace"},
+	})
+
+	minetest.register_craft({
+		output = name_prefix.."_crossbrace",
+		type="shapeless",
+		recipe = {name_prefix.."_extended_crossbrace"},
 	})
 
 	if burn_time > 0 then
 		minetest.register_craft({
 			type = "fuel",
-			recipe = mod_name..":pillar_"..material.name.."_top",
+			recipe = name_prefix.."_top",
 			burntime = burn_time*5/4,
 		})
 		minetest.register_craft({
 			type = "fuel",
-			recipe = mod_name..":pillar_"..material.name.."_top_half",
+			recipe = name_prefix.."_top_half",
 			burntime = burn_time*5/8,
 		})
 		minetest.register_craft({
 			type = "fuel",
-			recipe = mod_name..":pillar_"..material.name.."_bottom",
+			recipe = name_prefix.."_bottom",
 			burntime = burn_time*5/4,
 		})
 		minetest.register_craft({
 			type = "fuel",
-			recipe = mod_name..":pillar_"..material.name.."_bottom_half",
+			recipe = name_prefix.."_bottom_half",
 			burntime = burn_time*5/8,
 		})
 		minetest.register_craft({
 			type = "fuel",
-			recipe = mod_name..":pillar_"..material.name.."_middle",
+			recipe = name_prefix.."_middle",
 			burntime = burn_time*6/4,
 		})
 		minetest.register_craft({
 			type = "fuel",
-			recipe = mod_name..":pillar_"..material.name.."_middle_half",
+			recipe = name_prefix.."_middle_half",
 			burntime = burn_time*6/8,
 		})
 		minetest.register_craft({
 			type = "fuel",
-			recipe = mod_name..":pillar_"..material.name.."_crossbrace",
+			recipe = name_prefix.."_crossbrace",
 			burntime = burn_time*5/10,
 		})
 		minetest.register_craft({
 			type = "fuel",
-			recipe = mod_name..":pillar_"..material.name.."_extended_crossbrace",
+			recipe = name_prefix.."_extended_crossbrace",
 			burntime = burn_time*5/10,
 		})
 	end
 
 end
 
+local PILLAR_VARIANTS = {
+	"_bottom",
+	"_bottom_half",
+	"_crossbrace",
+	"_middle",
+	"_middle_half",
+	"_top",
+	"_top_half",
+	"_bottom",
+	"_bottom_half",
+	"_crossbrace",
+	"_middle",
+	"_middle_half",
+	"_top",
+	"_top_half"
+}
+
 -- The original castle mod had "pillars_", plural, which didn't match the arrowslit and murderhole standard.
 castle_masonry.register_pillar_alias = function(old_mod_name, old_material_name, new_mod_name, new_material_name)
-	minetest.register_alias(old_mod_name..":pillars_"..old_material_name.."_bottom",		new_mod_name..":pillar_"..new_material_name.."_bottom")
-	minetest.register_alias(old_mod_name..":pillars_"..old_material_name.."_bottom_half",	new_mod_name..":pillar_"..new_material_name.."_bottom_half")
-	minetest.register_alias(old_mod_name..":pillars_"..old_material_name.."_crossbrace",	new_mod_name..":pillar_"..new_material_name.."_crossbrace")
-	minetest.register_alias(old_mod_name..":pillars_"..old_material_name.."_middle",		new_mod_name..":pillar_"..new_material_name.."_middle")
-	minetest.register_alias(old_mod_name..":pillars_"..old_material_name.."_middle_half",	new_mod_name..":pillar_"..new_material_name.."_middle_half")
-	minetest.register_alias(old_mod_name..":pillars_"..old_material_name.."_top",			new_mod_name..":pillar_"..new_material_name.."_top")
-	minetest.register_alias(old_mod_name..":pillars_"..old_material_name.."_top_half",		new_mod_name..":pillar_"..new_material_name.."_top_half")
-	minetest.register_alias(old_mod_name..":pillar_"..old_material_name.."_bottom",			new_mod_name..":pillar_"..new_material_name.."_bottom")
-	minetest.register_alias(old_mod_name..":pillar_"..old_material_name.."_bottom_half",	new_mod_name..":pillar_"..new_material_name.."_bottom_half")
-	minetest.register_alias(old_mod_name..":pillar_"..old_material_name.."_crossbrace",		new_mod_name..":pillar_"..new_material_name.."_crossbrace")
-	minetest.register_alias(old_mod_name..":pillar_"..old_material_name.."_middle",			new_mod_name..":pillar_"..new_material_name.."_middle")
-	minetest.register_alias(old_mod_name..":pillar_"..old_material_name.."_middle_half",	new_mod_name..":pillar_"..new_material_name.."_middle_half")
-	minetest.register_alias(old_mod_name..":pillar_"..old_material_name.."_top",			new_mod_name..":pillar_"..new_material_name.."_top")
-	minetest.register_alias(old_mod_name..":pillar_"..old_material_name.."_top_half",		new_mod_name..":pillar_"..new_material_name.."_top_half")
+	for _, suffix in ipairs(PILLAR_VARIANTS) do
+		core.register_alias(
+			old_mod_name .. ":pillars_" .. old_material_name .. suffix,
+			new_mod_name .. ":pillar_"  .. new_material_name .. suffix
+		)
+	end
 end
 
 castle_masonry.register_arrowslit_alias_force = function(old_mod_name, old_material_name, new_mod_name, new_material_name)
-	minetest.register_alias_force(old_mod_name..":pillars_"..old_material_name.."_bottom",		new_mod_name..":pillar_"..new_material_name.."_bottom")
-	minetest.register_alias_force(old_mod_name..":pillars_"..old_material_name.."_bottom_half",	new_mod_name..":pillar_"..new_material_name.."_bottom_half")
-	minetest.register_alias_force(old_mod_name..":pillars_"..old_material_name.."_crossbrace",	new_mod_name..":pillar_"..new_material_name.."_crossbrace")
-	minetest.register_alias_force(old_mod_name..":pillars_"..old_material_name.."_middle",		new_mod_name..":pillar_"..new_material_name.."_middle")
-	minetest.register_alias_force(old_mod_name..":pillars_"..old_material_name.."_middle_half",	new_mod_name..":pillar_"..new_material_name.."_middle_half")
-	minetest.register_alias_force(old_mod_name..":pillars_"..old_material_name.."_top",			new_mod_name..":pillar_"..new_material_name.."_top")
-	minetest.register_alias_force(old_mod_name..":pillars_"..old_material_name.."_top_half",	new_mod_name..":pillar_"..new_material_name.."_top_half")
-	minetest.register_alias_force(old_mod_name..":pillar_"..old_material_name.."_bottom",		new_mod_name..":pillar_"..new_material_name.."_bottom")
-	minetest.register_alias_force(old_mod_name..":pillar_"..old_material_name.."_bottom_half",	new_mod_name..":pillar_"..new_material_name.."_bottom_half")
-	minetest.register_alias_force(old_mod_name..":pillar_"..old_material_name.."_crossbrace",	new_mod_name..":pillar_"..new_material_name.."_crossbrace")
-	minetest.register_alias_force(old_mod_name..":pillar_"..old_material_name.."_middle",		new_mod_name..":pillar_"..new_material_name.."_middle")
-	minetest.register_alias_force(old_mod_name..":pillar_"..old_material_name.."_middle_half",	new_mod_name..":pillar_"..new_material_name.."_middle_half")
-	minetest.register_alias_force(old_mod_name..":pillar_"..old_material_name.."_top",			new_mod_name..":pillar_"..new_material_name.."_top")
-	minetest.register_alias_force(old_mod_name..":pillar_"..old_material_name.."_top_half",		new_mod_name..":pillar_"..new_material_name.."_top_half")
+	for _, suffix in ipairs(PILLAR_VARIANTS) do
+		core.register_alias_force(
+			old_mod_name .. ":pillars_" .. old_material_name .. suffix,
+			new_mod_name .. ":pillar_"  .. new_material_name .. suffix
+		)
+	end
 end
