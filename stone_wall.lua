@@ -18,7 +18,6 @@ minetest.register_node("castle_masonry:stonewall", {
 	description = S("Castle Wall"),
 	drawtype = "normal",
 	tiles = {"castle_stonewall.png"},
-	paramtype = "light",
 	drop = "castle_masonry:stonewall",
 	groups = {cracky=3, pickaxey=1, stonecuttable=1},
 	_mcl_hardness = 1,
@@ -31,7 +30,6 @@ minetest.register_node("castle_masonry:rubble", {
 	description = S("Castle Rubble"),
 	drawtype = "normal",
 	tiles = {"castle_rubble.png"},
-	paramtype = "light",
 	groups = {crumbly=3, shovely=1, falling_node=1, stonecuttable=1},
 	_mcl_hardness = 0.8,
 	_mcl_blast_resistance = 1,
@@ -63,7 +61,6 @@ minetest.register_craft({
 
 minetest.register_node("castle_masonry:stonewall_corner", {
 	drawtype = "normal",
-	paramtype = "light",
 	paramtype2 = "facedir",
 	description = S("Castle Corner"),
 	tiles = {"castle_corner_stonewall_tb.png^[transformR90",
@@ -153,7 +150,6 @@ minetest.register_node("castle_masonry:dungeon_stone", {
 	groups = {cracky=2, pickaxey=2, stonecuttable=1},
 	_mcl_hardness = 1,
 	_mcl_blast_resistance = 1,
-	paramtype = "light",
 	sounds = castle_masonry.sounds.node_sound_stone_defaults(),
 })
 

@@ -14,7 +14,6 @@ minetest.register_node("castle_masonry:pavement_brick", {
 	groups = {cracky=2, pickaxey=2, stonecuttable=1},
 	_mcl_hardness = 1,
 	_mcl_blast_resistance = 1,
-	paramtype = "light",
 	sounds = castle_masonry.sounds.node_sound_stone_defaults(),
 })
 
